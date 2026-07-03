@@ -1,0 +1,171 @@
+/* ---------------------------------------------
+   Tokens
+--------------------------------------------- */
+:root {
+  --bg: #212529;
+  --surface: #2b2f34;
+  --line: #3a3f45;
+  --text: #f1f1f1;
+  --muted: #9a9fa6;
+  --accent: #7c5cff;
+  --danger: #e55a6b;
+  --completed: #008000;
+
+  --font: "Inter", "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+}
+
+
+.Todo_con {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-direction: column;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 64px 20px;
+}
+
+.Todo_header {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+
+.todo_input_row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.todo_input {
+  flex: 1;
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.todo_input::placeholder {
+  color: var(--muted);
+}
+
+.todo_input:focus-visible {
+  border-color: var(--accent);
+}
+
+
+button {
+  border: none;
+  background: none;
+  color: var(--text);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.buttonOne {
+  background-color: var(--accent);
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.buttonOne:hover {
+  opacity: 0.9;
+}
+
+.buttonOne button {
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+
+.s .buttonOne {
+  background: transparent;
+  padding: 4px 10px;
+}
+
+.s .buttonOne button {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.s .buttonOne:first-child:hover button {
+  color: var(--text);
+}
+.s .buttonOne:nth-child(2):hover button {
+  color: var(--danger);
+}
+.s .buttonOne:last-child:hover button {
+  color: var(--completed);
+}
+
+
+.output {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.d {
+  width: 100%;
+
+}
+
+.todo_output_con {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--surface);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.todo_output {
+  font-size: 0.95rem;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.s {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+
+.empty_state {
+  width: 100%;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 20px 0;
+}
+
