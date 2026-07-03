@@ -1,11 +1,11 @@
 import './App.css'
-import TodoInput from './components/TodoInput'
 import Header  from  './components/Todoheader'
+import TodoPage from './pages/TodoPage'
 function App() {
 
   return (
     <> 
-      <TodoInput />
+     <TodoPage/>
     
     </>
   )
