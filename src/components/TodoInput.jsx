@@ -9,11 +9,9 @@ const TodoInput = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [Editindex, setEditIndex] = useState(null);
   const [completed, setCompleted] = useState([]);
-  console.log(localStorage);
 
   useEffect(() => {
     localStorage.setItem("todoList", JSON.stringify(todoList)) || [];
-    console.log(storedTodo);
   }, [todoList]);
 
   //handel task
@@ -21,13 +19,16 @@ const TodoInput = () => {
     if (text.trim() !== "") {
       console.log("lol");
       //updating the todoList
-      setList([...todoList,{text:text,completed:false,date: moment().format("Do MMM YYYY"),}]);
+      setList([
+        ...todoList,
+        { text: text, completed: false, date: moment().format("Do MMM YYYY") },
+      ]);
       setText("");
     }
   };
 
   const editTask = (index) => {
-    setText(todoList[index]);
+    setText(todoList[index].text);
     setEditIndex(index);
     setIsEdit(true);
   };
@@ -35,12 +36,15 @@ const TodoInput = () => {
   const saveEdit = (index) => {
     if (text.trim() === "") return;
     const updatedList = [...todoList]; //copy todo array
-    updatedList[Editindex] = text; // Replace the old text
+    console.log(updatedList);
+
+    updatedList[Editindex].text = text; // Replace the old text
     setList(updatedList);
     setText("");
     setEditIndex(null);
     setIsEdit(false);
   };
+  // saveEdit()
   const cancelEdit = () => {
     setIsEdit(false);
   };
@@ -52,9 +56,9 @@ const TodoInput = () => {
 
   const handleCompletedTodo = (index) => {
     const updatedList = [...todoList];
-     updatedList[index].completed = !updatedList[index].completed;
-      alert("TodoCompleted");
-     setList(updatedList)
+    updatedList[index].completed = !updatedList[index].completed;
+    alert("TodoCompleted");
+    setList(updatedList);
   };
 
   return (
@@ -82,15 +86,22 @@ const TodoInput = () => {
           <div className="output">
             {todoList.map((todo, index) => {
               // rendering the todoListt
-
+          console.log(todoList);
               return (
                 <div className="d" key={index}>
                   <div className="todo_output_con">
-                    <div className="todo_output " style={{textDecoration: todo.completed ? 'line-through #fff' : 'none',color:   "#9a9fa6"}} >
+                    <div
+                      className="todo_output "
+                      style={{
+                        textDecoration: todo.completed
+                          ? "line-through"
+                          : "none",
+                        color: todo.completed ? "#9a9fa6" : "#fff",
+                      }}
+                    >
                       {todo.text}{" "}
-                      <div className="date" style={{  }}>
+                      <div className="date" style={{}}>
                         {todo.date}
-                        
                       </div>
                     </div>
                     <div className="s">
