@@ -21,7 +21,7 @@ const TodoInput = () => {
     if (text.trim() !== "") {
       console.log("lol");
       //updating the todoList
-      setList([...todoList, text]);
+      setList([...todoList,{text:text,completed:false,date: moment().format("Do MMM YYYY"),}]);
       setText("");
     }
   };
@@ -51,7 +51,10 @@ const TodoInput = () => {
   };
 
   const handleCompletedTodo = (index) => {
-    's'
+    const updatedList = [...todoList];
+     updatedList[index].completed = !updatedList[index].completed;
+      alert("TodoCompleted");
+     setList(updatedList)
   };
 
   return (
@@ -83,10 +86,11 @@ const TodoInput = () => {
               return (
                 <div className="d" key={index}>
                   <div className="todo_output_con">
-                    <div className="todo_output">
-                      {todo}{" "}
-                      <div className="date" style={{ color: "#9a9fa6" }}>
-                        {moment().format("Do MMM YYYY")}
+                    <div className="todo_output " style={{textDecoration: todo.completed ? 'line-through #fff' : 'none',color: todo.completed ?  "#9a9fa6" : 'none'}} >
+                      {todo.text}{" "}
+                      <div className="date" style={{ color: todo.completed ?  "#9a9fa6" : 'none' }}>
+                        {todo.date}
+                        
                       </div>
                     </div>
                     <div className="s">

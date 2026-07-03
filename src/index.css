@@ -151,6 +151,7 @@ button {
 .todo_output {
   font-size: 0.95rem;
   color: var(--text);
+   text-decoration-color: red;     
   word-break: break-word;
 }
 
@@ -168,4 +169,5 @@ button {
   font-size: 0.9rem;
   padding: 20px 0;
 }
+
 
