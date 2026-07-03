@@ -86,9 +86,9 @@ const TodoInput = () => {
               return (
                 <div className="d" key={index}>
                   <div className="todo_output_con">
-                    <div className="todo_output " style={{textDecoration: todo.completed ? 'line-through #fff' : 'none',color: todo.completed ?  "#9a9fa6" : 'none'}} >
+                    <div className="todo_output " style={{textDecoration: todo.completed ? 'line-through #fff' : 'none',color:   "#9a9fa6"}} >
                       {todo.text}{" "}
-                      <div className="date" style={{ color: todo.completed ?  "#9a9fa6" : 'none' }}>
+                      <div className="date" style={{  }}>
                         {todo.date}
                         
                       </div>
