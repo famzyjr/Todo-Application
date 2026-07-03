@@ -51,7 +51,7 @@ const TodoInput = () => {
   };
 
   const handleCompletedTodo = (index) => {
-    
+    's'
   };
 
   return (
