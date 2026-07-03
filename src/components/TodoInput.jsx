@@ -50,7 +50,9 @@ const TodoInput = () => {
     setList(Delete); //updating delete state
   };
 
-  const handleCompletedTodo = (index) => {};
+  const handleCompletedTodo = (index) => {
+    
+  };
 
   return (
     <>
