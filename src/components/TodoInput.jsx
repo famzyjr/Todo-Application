@@ -9,6 +9,7 @@ const TodoInput = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [Editindex, setEditIndex] = useState(null);
   const [completed, setCompleted] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("todoList", JSON.stringify(todoList)) || [];
@@ -51,6 +52,7 @@ const TodoInput = () => {
 
   const deleteTask = (index) => {
     const Delete = todoList.filter((item, i) => i !== index);
+    localStorage.removeItem("todoList");
     setList(Delete); //updating delete state
   };
 
@@ -65,55 +67,61 @@ const TodoInput = () => {
     <>
       <div className="Todo_con">
         <Header header="Todo Application" />
-        <div>
+        <div className="todo_input_row">
           <input
+            className="todo_input"
+            type="text"
             required
-            style={{ width: "200px" }}
             value={text}
-            onChange={(e) => {
-              setText(e.target.value);
+            onChange={(e) => setText(e.target.value)}
+            placeholder={
+              isEdit ? "Edit your todo..." : "What do you want to do today?"
+            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                isEdit ? saveEdit() : addTask();
+              }
             }}
-            placeholder="enter entry"
           />
-        </div>
-        <div className="buttonOne">
-          <button onClick={isEdit ? saveEdit : addTask}>
-            {isEdit ? "Save" : "Add"}
-          </button>
+
+          <div className="buttonOne">
+            <button onClick={isEdit ? saveEdit : addTask}>
+              {isEdit ? "Save" : "Add"}
+            </button>
+          </div>
         </div>
 
         <div>
           <div className="output">
             {todoList.map((todo, index) => {
               // rendering the todoListt
-          console.log(todoList);
+              console.log(todoList);
               return (
                 <div className="d" key={index}>
                   <div className="todo_output_con">
-                    <div
-                      className="todo_output "
-                      style={{
-                        textDecoration: todo.completed
-                          ? "line-through"
-                          : "none",
-                        color: todo.completed ? "#9a9fa6" : "#fff",
-                      }}
-                    >
-                      {todo.text}{" "}
-                      <div className="date" style={{}}>
-                        {todo.date}
+                    <div className="todo_content">
+                      <div
+                        className={`todo_output ${todo.completed ? "todo_completed" : ""}`}
+                      >
+                        {todo.text}
                       </div>
+
+                      <div className="date">{todo.date}</div>
                     </div>
                     <div className="s">
-                      <div className="buttonOne">
+                      <div
+                        className={`buttonOne ${todo.completed ? "jjj" : "none"}`}
+                      >
                         <button onClick={() => editTask(index)}>Edit</button>
                       </div>
-                      <div className="buttonOne">
+                      <div
+                        className={`buttonOne ${todo.completed ? "jjj" : "none"}`}
+                      >
                         <button onClick={() => deleteTask(index)}>
                           Delete
                         </button>
                       </div>
-                      <div className="buttonOne">
+                      <div className={`buttonOne`}>
                         <button onClick={() => handleCompletedTodo(index)}>
                           completed
                         </button>
